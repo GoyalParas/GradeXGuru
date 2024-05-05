@@ -14,6 +14,8 @@ from sqlalchemy import create_engine
 import pickle
 import numpy as np
 
+import dill
+
 #import mysql.connector
 
 load_dotenv()
@@ -84,3 +86,17 @@ def evaluate_models(X_train, y_train,X_test,y_test,models,param):
 
     except Exception as e:
         raise CustomException(e, sys)
+
+
+
+
+
+
+
+def load_object(file_path):
+    try:
+        with open(file_path, "rb") as file_obj:
+            return pickle.load(file_obj)
+
+    except Exception as e:
+        raise CustomException(e, sys) 
